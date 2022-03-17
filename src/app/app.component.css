@@ -1,6 +1,11 @@
+.content {
+  min-height: 100vh;
+}
+
 @media (max-width: 575px) {
   .content {
     margin-top: 56px;
+    min-height: calc(100vh - 56px);
   }
 
   .sidebar {
