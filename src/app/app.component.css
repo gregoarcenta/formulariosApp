@@ -2,4 +2,8 @@
   .content {
     margin-top: 56px;
   }
+
+  .sidebar {
+    z-index: 9999;
+  }
 }

@@ -1,1 +1,67 @@
-<p>dinamicos works!</p>
+<h2>Template: Dinámicos</h2>
+<hr>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form autocomplete="off" (ngSubmit)="guardar()" #miFormulario="ngForm">
+
+        <!--Nombre-->
+        <div class="mb-3 row">
+          <label for="producto" class="col-sm-12 col-md-2 col-form-label fw-bold">Nombre:</label>
+          <div class="col-sm-12 col-md-10 col-lg-6">
+            <input type="text" class="form-control" id="producto" name="nombre" placeholder="Nombre..."
+              [ngModel]="persona.nombre" required readonly>
+            <span class="form-text text-danger" *ngIf="(validarInput('nombre')?.error)">
+              {{validarInput('nombre').msg}}
+            </span>
+          </div>
+        </div>
+
+        <!--Agregar Favorito-->
+        <div class="mb-3 row">
+          <label class="col-sm-12 col-md-2 col-form-label fw-bold">Agregar Favorito:</label>
+          <div class="col-sm-12 col-md-10 col-lg-6">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Agregar Favorito" [(ngModel)]="nuevoFavorito"
+                name="favorito">
+              <button class="btn btn-outline-primary" type="button" (click)="agregarFavorito()">Agregar</button>
+            </div>
+            <span class="form-text text-danger" *ngIf="(validarInput('favorito')?.error)">
+              {{validarInput('favorito').msg}}
+            </span>
+          </div>
+        </div>
+
+        <!--Lista de juegos-->
+        <div class="mb-3 row">
+          <label class="col-sm-12 col-md-2 col-form-label fw-bold">Favoritos:</label>
+          <div class="col-sm-12 col-md-10 col-lg-6">
+
+            <div class="input-group mb-1" *ngFor="let juego of persona.favoritos; let i = index">
+              <input type="text" class="form-control" name="favorito_{{i}}" [(ngModel)]="juego.nombre">
+              <button class="btn btn-outline-danger" type="button" (click)="eliminarFavorito(i)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+
+        <!--Boton guardar-->
+        <div class="row mt-4">
+          <div class="col-sm-12 col-lg-8">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <button class="btn btn-primary" type="submit">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h5>Persona</h5>
+    <pre>{{persona | json }}</pre>
+  </div>
+
+</div>
