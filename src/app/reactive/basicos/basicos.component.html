@@ -1,1 +1,74 @@
-<p>basicos works!</p>
+<h2>Reactive: Basicos</h2>
+<hr>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="guardar()">
+        <!--Campo de nombre del producto-->
+        <div class="mb-3 row">
+          <label for="producto" class="col-sm-12 col-md-2 col-form-label fw-bold">Producto</label>
+          <div class="col-sm-12 col-md-10 col-lg-6">
+            <input type="text" class="form-control" id="producto" placeholder="Nombre del producto"
+              formControlName="nombre">
+            <span class="form-text text-danger" *ngIf="(validarInput('nombre').error)">
+              {{validarInput('nombre')?.msg}}
+            </span>
+          </div>
+        </div>
+        <!--Campo de precio del producto-->
+        <div class="mb-3 row">
+          <label for="precio" class="col-sm-12 col-md-2 col-form-label fw-bold">Precio</label>
+          <div class="col-sm-12 col-md-10 col-lg-6">
+            <input type="number" class="form-control" id="precio" placeholder="Precio del producto"
+              formControlName="precio">
+            <span class="form-text text-danger" *ngIf="(validarInput('precio')?.error)">
+              {{validarInput('precio')?.msg}}
+            </span>
+          </div>
+        </div>
+        <!--Campo de la existencia del producto-->
+        <div class="mb-3 row">
+          <label for="existencia" class="col-sm-12 col-md-2 col-form-label fw-bold">Existencias</label>
+          <div class="col-sm-12 col-md-10 col-lg-6">
+            <input #int type="number" class="form-control" id="existencia" placeholder="Existencias del producto"
+              formControlName="existencias">
+            <span class="form-text text-danger" *ngIf="(validarInput('existencias')?.error)">
+              {{validarInput('existencias')?.msg}}
+            </span>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-sm-12 col-lg-8">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <button class="btn btn-primary" type="submit">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h5>Valid</h5>
+    <pre>{{miFormulario.valid | json }}</pre>
+  </div>
+  <div class="col">
+    <h5>Printine</h5>
+    <pre>{{miFormulario.pristine | json }}</pre>
+  </div>
+  <div class="col">
+    <h5>Touched</h5>
+    <pre>{{miFormulario.touched | json }}</pre>
+  </div>
+  <div class="col">
+    <h5>Value</h5>
+    <pre>{{miFormulario.value | json}}</pre>
+  </div>
+  <div class="col">
+    <h5>Errors</h5>
+    <pre>{{miFormulario.controls['precio'].errors | json}}</pre>
+  </div>
+</div>
