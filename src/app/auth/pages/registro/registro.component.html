@@ -1,0 +1,95 @@
+<div class="row justify-content-center">
+  <h1 class="text-center">Registro</h1>
+  <div class="col-md-10 col-lg-8 mt-4">
+    <form autocomplete="off" [formGroup]="registroForm" (ngSubmit)="guardar()">
+      <!--nombre-->
+      <div class="row mb-2 mb-lg-3">
+        <label for="nombre" class="col-form-label col-lg-3">Nombre</label>
+        <div class="col-lg-9">
+          <input type="text" class="form-control" id="nombre" placeholder="Nombre del usuario" formControlName="nombre">
+          <span *ngIf="validarInput('nombre')?.error"
+            class="form-text text-danger">{{validarInput('nombre')?.msg}}</span>
+        </div>
+      </div>
+
+      <!--email-->
+      <div class="row mb-2 mb-lg-3">
+        <label for="email" class="col-form-label col-lg-3">Correo Electrónico</label>
+        <div class="col-lg-9">
+          <input type="email" class="form-control" id="email" placeholder="Correo del usuario" formControlName="email">
+          <span *ngIf="isInputNotValid('email')" class="form-text text-danger">
+            {{emailErrorMsg}}
+          </span>
+        </div>
+      </div>
+
+      <!--usuario-->
+      <div class="row mb-2 mb-lg-3">
+        <label for="usuario" class="col-form-label col-lg-3">Usuario</label>
+        <div class="col-lg-9">
+          <input type="text" class="form-control" id="usuario" placeholder="Usuario Codigo del usuario"
+            formControlName="usuario">
+          <span *ngIf="validarInput('usuario')?.error"
+            class="form-text text-danger">{{validarInput('usuario')?.msg}}</span>
+        </div>
+      </div>
+
+      <!--password-->
+      <div class="row mb-2 mb-lg-3">
+        <label for="password" class="col-form-label col-lg-3">Contraseña</label>
+        <div class="col-lg-9">
+          <input type="password" class="form-control" id="password" placeholder="Contraseña del usuario"
+            formControlName="password">
+          <span *ngIf="validarInput('password')?.error"
+            class="form-text text-danger">{{validarInput('password')?.msg}}</span>
+        </div>
+      </div>
+
+      <!--password2-->
+      <div class="row mb-2 mb-lg-3">
+        <label for="password2" class="col-form-label col-lg-3">Confirmar Contraseña</label>
+        <div class="col-lg-9">
+          <input type="password" class="form-control" id="password2" placeholder="Confirmar la contraseña"
+            formControlName="password2">
+          <span *ngIf="validarInput('password2')?.error"
+            class="form-text text-danger">{{validarInput('password2')?.msg}}</span>
+        </div>
+      </div>
+
+      <!--button submit-->
+      <div class="d-grid justify-content-md-end mt-3">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <h4>Form Valid:</h4>
+  <pre>{{registroForm.valid | json}}</pre>
+  <h4>Form Status:</h4>
+  <pre>{{registroForm.status | json}}</pre>
+  <h4>Form Errors:</h4>
+  <pre>{{registroForm.errors | json}}</pre>
+  <h4>Errors</h4>
+  <div class="col">
+    <h5>Nombre:</h5>
+    <pre>{{registroForm.controls['nombre'].errors | json}}</pre>
+  </div>
+  <div class="col">
+    <h5>Email:</h5>
+    <pre>{{registroForm.controls['email'].errors | json}}</pre>
+  </div>
+  <div class="col">
+    <h5>Usuario:</h5>
+    <pre>{{registroForm.controls['usuario'].errors | json}}</pre>
+  </div>
+  <div class="col">
+    <h5>Password:</h5>
+    <pre>{{registroForm.controls['password'].errors | json}}</pre>
+  </div>
+  <div class="col">
+    <h5>Password 2:</h5>
+    <pre>{{registroForm.controls['password2'].errors | json}}</pre>
+  </div>
+</div>

@@ -6,27 +6,24 @@
 
   <div class="collapse navbar-collapse" id="navbarContent">
     <div class="nav nav-pills flex-column align-items-stretch p-4 text-center w-100">
+
       <h3 class="text-center">Template</h3>
-      <a class="nav-link" [routerLink]="['/template/basicos']" routerLinkActive="active" (click)="closeMenu()">
-        Basicos
-      </a>
-      <a class="nav-link" [routerLink]="['/template/dinamicos']" routerLinkActive="active" (click)="closeMenu()">
-        Dinámicos
-      </a>
-      <a class="nav-link" [routerLink]="['/template/switches']" routerLinkActive="active" (click)="closeMenu()">
-        Switches
-      </a>
-      <h3 class="text-center mt-4">Reactive</h3>
-      <a class="nav-link" [routerLink]="['/reactive/basicos']" routerLinkActive="active" (click)="closeMenu()">
-        Basicos
-      </a>
-      <a class="nav-link" [routerLink]="['/reactive/dinamicos']" routerLinkActive="active" (click)="closeMenu()">
-        Dinámicos
-      </a>
-      <a class="nav-link" [routerLink]="['/reactive/switches']" routerLinkActive="active" (click)="closeMenu()">
-        Switches
+      <a *ngFor="let item of templateMenu" class="nav-link" [routerLink]="[item.path]" routerLinkActive="active"
+        (click)="closeMenu()">
+        {{item.texto}}
       </a>
 
+      <h3 class="text-center mt-4">Reactive</h3>
+      <a *ngFor="let item of reactiveMenu" class="nav-link" [routerLink]="[item.path]" routerLinkActive="active"
+        (click)="closeMenu()">
+        {{item.texto}}
+      </a>
+
+      <h3 class="text-center mt-4">Validaciones</h3>
+      <a *ngFor="let item of authMenu" class="nav-link" [routerLink]="[item.path]" routerLinkActive="active"
+        (click)="closeMenu()">
+        {{item.texto}}
+      </a>
     </div>
   </div>
 </nav>
